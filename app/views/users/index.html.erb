@@ -1,0 +1,19 @@
+<h1>Users</h1>
+
+<div class="info"></div>
+
+<ul>
+  <% for user in @users %>
+    <li>
+    <a href="<%= user_path(user) %>">
+      <%= user.first_name %>
+      <%= "#{user.middle_initial}." unless user.middle_initial.nil? %>
+      <%= user.last_name %>
+    </a>
+    
+    <%= "*" * (user.no_stars || 0) %>
+    </li>
+  <% end %>
+</ul>
+
+

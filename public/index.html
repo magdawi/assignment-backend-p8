@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ruby on Rails: Testing for Stars Exercise</title>
+    <style type="text/css" media="screen">
+      body {
+        margin: 0;
+        margin-bottom: 25px;
+        padding: 0;
+        background-color: #f0f0f0;
+        font-family: "Lucida Grande", "Bitstream Vera Sans", "Verdana";
+        font-size: 13px;
+        color: #333;
+      }
+
+      kbd {
+        color: black;
+        font-family: monospace;
+        font-weight: bold;
+      }
+
+      h1 {
+        font-size: 28px;
+        color: #000;
+      }
+
+      a  {color: #03c}
+      a:hover {
+        background-color: #03c;
+        color: white;
+        text-decoration: none;
+      }
+
+
+      #page {
+        background-color: #f0f0f0;
+        width: 750px;
+        margin: 0;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      #content {
+        float: left;
+        background-color: white;
+        border: 3px solid #aaa;
+        border-top: none;
+        padding: 25px;
+        width: 500px;
+      }
+
+      #sidebar {
+        float: right;
+        width: 175px;
+      }
+
+      #footer {
+        clear: both;
+      }
+
+      #header, #about, #getting-started {
+        padding-left: 75px;
+        padding-right: 30px;
+      }
+
+
+      #header {
+        background-image: url("assets/rails.png");
+        background-repeat: no-repeat;
+        background-position: top left;
+        height: 64px;
+      }
+      #header h1, #header h2 {margin: 0}
+      #header h2 {
+        color: #888;
+        font-weight: normal;
+        font-size: 16px;
+      }
+
+
+      #about h3 {
+        margin: 0;
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
+
+      #about-content {
+        background-color: #ffd;
+        border: 1px solid #fc0;
+        margin-left: -55px;
+        margin-right: -10px;
+      }
+      #about-content table {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 11px;
+        border-collapse: collapse;
+      }
+      #about-content td {
+        padding: 10px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+      }
+      #about-content td.name  {color: #555}
+      #about-content td.value {color: #000}
+
+      #about-content ul {
+        padding: 0;
+        list-style-type: none;
+      }
+
+      #about-content.failure {
+        background-color: #fcc;
+        border: 1px solid #f00;
+      }
+      #about-content.failure p {
+        margin: 0;
+        padding: 10px;
+      }
+
+
+      #getting-started {
+        border-top: 1px solid #ccc;
+        margin-top: 25px;
+        padding-top: 15px;
+      }
+      #getting-started h1 {
+        margin: 0;
+        font-size: 20px;
+      }
+      #getting-started h2 {
+        margin: 0;
+        font-size: 14px;
+        font-weight: normal;
+        color: #333;
+        margin-bottom: 25px;
+      }
+      #getting-started ol {
+        margin-left: 0;
+        padding-left: 0;
+      }
+      #getting-started li {
+        font-size: 18px;
+        color: #888;
+        margin-bottom: 25px;
+      }
+      #getting-started li h2 {
+        margin: 0;
+        font-weight: normal;
+        font-size: 18px;
+        color: #333;
+      }
+      #getting-started li p, 
+      #getting-started li li {
+        color: #555;
+        font-size: 13px;
+        margin-bottom: 13px;
+      }
+
+
+      #sidebar ul {
+        margin-left: 0;
+        padding-left: 0;
+      }
+      #sidebar ul h3 {
+        margin-top: 25px;
+        font-size: 16px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+      }
+      #sidebar li {
+        list-style-type: none;
+      }
+      #sidebar ul.links li {
+        margin-bottom: 5px;
+      }
+
+      .filename {
+        font-style: italic;
+      }
+    </style>
+    <script type="text/javascript">
+      function about() {
+        info = document.getElementById('about-content');
+        if (window.XMLHttpRequest)
+          { xhr = new XMLHttpRequest(); }
+        else
+          { xhr = new ActiveXObject("Microsoft.XMLHTTP"); }
+        xhr.open("GET","rails/info/properties",false);
+        xhr.send("");
+        info.innerHTML = xhr.responseText;
+        info.style.display = 'block'
+      }
+    </script>
+  </head>
+  <body>
+    <div id="page">
+      <div id="sidebar">
+        <ul id="sidebar-items">
+          <li>
+            <h3>Look a the pages</h3>
+            <ul class="links">
+              <li><a href="/users/">users#index</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div id="content">
+        <div id="header">
+          <h1>Testing for Stars Exercise</h1>
+          <h2>Learn about test driven development in rails</h2>
+        </div>
+
+        <div id="getting-started">
+          <h1>What to do</h1>
+
+          <ol>
+            <li>
+              <h2>Run the tests</h2>
+              <p>using <kbd>rake test</kbd>.  Do all the tests pass? </p>
+            </li>
+            <li>
+              <h2>Find the Model Test</h2>
+              <p>Find the file that contains tests for model User </p>
+            </li>
+
+            <li>
+              <h2>Model Test: default value</h2>
+              <p>Write a test to check that a newly created user
+              has a `no_stars` set to zero. This test should immediately
+              pass, the default value was set correctly in the migration that
+              created the users table.</p>
+            </li>
+
+            <li>
+              <h2>TDD: a new method</h2>
+              <p>In the user model, there should be a method `add_star!` that increases the number by
+              one.
+              </p>
+              <p>Write the test first. Make sure it fails, then implement the changes in the model
+              and make sure the test passes now.</p>
+            </li>
+
+            <li>
+              <h2>Find the Feature Test</h2>
+              <p>Find the file that already contains two feature tests.
+              What do they test for.  Which test uses JavaScript and which doesn't?
+              The javascript driver can save screenshots. 
+              Before you look at the screenshot: discuss what you expect it to show!
+              Then find the screenshot and compare.
+              </p>
+            </li>
+
+            <li>
+              <h2>Feature Test: create a user</h2>
+              <p>write a feature test that loads the new user form,
+              fills part of it in, and checks if the users name appears on the resulting page.
+              </p>
+              <p>When your test passes, add a validation that
+              makes saving your test data invalid.  Make sure that the test
+              does not pass anymore.</p>
+              <p>Now split you test into two test cases: one to make
+              sure that a user that is not valid cannot be saved, and one
+              to make sure that a valid user can be saved.</p>
+            </li>
+            <li>
+              <h2>TDD: a new feature</h2>
+              <p>In the show-view there should be a button to increase the
+              number of stars for a user. After pressing the button you
+              should return to the user index page and see the new number
+              of stars displayed.</p>
+              <p>Write the feauture test first! 
+              then implement the necessary changes.</p>
+            </li>
+
+            <li>
+              <h2>Feature Test with javascript: load info with AJAX</h2>
+              <p>In the user#index view there is a button
+              that loads information via ajax and
+              displays it in the .output box. </p>
+              <p>Write a feature test that checks this behaviour.</p>
+              <p>When your test passes, and you think you're done,
+              try breaking the behavior by changing the URL in <kbd>app/assets/javascript/application.js</kbd>
+              and make sure that the test now fails. This way you can confirm that
+              your test actually tests somthing ;-)</p>
+              <p>Fix everything again.</p>
+            </li>
+            <li>
+              <h2>TDD: add stars with AJAX</h2>
+              <p>In the show-view there should be a button for each user to increase the
+              number of stars. This should happen via AJAX (<kbd>remote: true</kbd>)</p>
+              <p>Write the feauture test first! 
+              then implement the changes in the
+              view!</p>
+            </li>
+
+
+          </ol>
+        </div>
+      </div>
+
+      <div id="footer">&nbsp;</div>
+    </div>
+  </body>
+</html>

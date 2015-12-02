@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: John
+  middle_initial: F
+  last_name: Kennedy
+  no_stars: 0
+
+two:
+  first_name: Hillary
+  middle_initial: R
+  last_name: Clinton
+  no_stars: 1
