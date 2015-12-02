@@ -32,7 +32,12 @@ class ListOfUsersTest < Capybara::Rails::TestCase
   end
 
   test "creating new user failed" do
-    assert true
+    visit new_user_path
+    fill_in('First name', with: 'Heinrich')
+    fill_in('Middle initial', with: 'Fe.')
+    fill_in('Last name', with: 'Senf')
+    fill_in('No stars', with: '2')
+    click_button('Create User')
   end
 
 end
