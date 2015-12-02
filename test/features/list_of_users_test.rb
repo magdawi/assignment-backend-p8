@@ -16,4 +16,23 @@ class ListOfUsersTest < Capybara::Rails::TestCase
     assert_button page, "load info"
   end
 
+  test "creating new user passed" do
+    visit new_user_path
+    fill_in('First name', with: 'Felix')
+    fill_in('Middle initial', with: 'B.')
+    fill_in('Last name', with: 'Ketchup')
+    fill_in('No stars', with: '4')
+    click_button('Create User')
+
+    assert_content page, "User was successfully created."
+    assert_content page, "Felix"
+    assert_content page, "B."
+    assert_content page, "Ketchup"
+    assert_content page, "4"
+  end
+
+  test "creating new user failed" do
+    assert true
+  end
+
 end
