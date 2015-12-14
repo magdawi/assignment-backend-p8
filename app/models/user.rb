@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	validates :middle_initial, length: {maximum: 1}
+	validates :middle_initial, length: {maximum: 2}
 
 	def add_star!
 		no_stars + 1
