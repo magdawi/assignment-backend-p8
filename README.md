@@ -87,9 +87,14 @@ Discussion about Screenshot-containments:
 - It may only show the test users instead of the dev/production seeds
 - found in tmp/lists_of_users_screenshot.png (stated path in test)
 
-6. Feature Test: create a user
-                     write a feature test that loads the new user form, fills part of it in, and checks if the users name appears on the resulting page.
+6. Feature Test: Add feature tests for new user (one test for creating a new user is successful & one for creating a new user fails) -> screenshots saved
 
+> validation checks if 'Middle initial' length is maximal 2
+> user "Felix B. Ketchup" is successfully created
+> user "Heinrich Fe. Senf" fails
+
+7. TDD:
+ 
 
 
 
