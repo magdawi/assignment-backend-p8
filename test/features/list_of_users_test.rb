@@ -47,4 +47,13 @@ class ListOfUsersTest < Capybara::Rails::TestCase
     save_screenshot('tmp/new_user_failed_screenshot.png', :full => true)
   end
 
+  test "right number of stars is showed" do
+    Capybara.current_driver = Capybara.javascript_driver
+    visit user_path(1)
+    click_button('Add Star')
+
+    assert_content page, "John F. Kennedy *" 
+    save_screenshot('tmp/users-index.png', :full => true)
+  end
+
 end

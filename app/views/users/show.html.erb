@@ -20,5 +20,9 @@
   <%= @user.no_stars %>
 </p>
 
+<p>
+  <%= button_to "Add Star", users_path, :method => :get, :action => @user.update(:no_stars => @user.no_stars+1) %>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
