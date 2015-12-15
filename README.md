@@ -94,7 +94,7 @@ Discussion about Screenshot-containments:
 > user "Heinrich Fe. Senf" fails
 
 7. TDD:
- 
+Write feature test for increasing-stars-button before implementing the button. 
 
 
 
