@@ -87,16 +87,28 @@ Discussion about Screenshot-containments:
 - It may only show the test users instead of the dev/production seeds
 - found in tmp/lists_of_users_screenshot.png (stated path in test)
 
-6. Feature Test: Add feature tests for new user (one test for creating a new user is successful & one for creating a new user fails) -> screenshots saved
+6. Feature Test: create a user
+Add feature tests for new user (one test for creating a new user is successful & one for creating a new user fails) -> screenshots saved
 
 > validation checks if 'Middle initial' length is maximal 2
 > user "Felix B. Ketchup" is successfully created
 > user "Heinrich Fe. Senf" fails
 
-7. TDD:
-Write feature test for increasing-stars-button before implementing the button. 
+7. TDD: a new feature
+Write feature test for increasing-stars-button before implementing the button.
 
+> added test which visits user_path(1) and clicks button "Add Star"
+> checks if in index name of index shows right number of stars and takes screenshot
 
+INFO: in fixtures id-attribute is missing - added ids to fixtures to enable visiting user_path(1)
+
+after writing the test:
+> added button to show.html.erb with button_to
+  - links to users_path
+  - uses method get, because no param is given
+  - used action to update users no_stars
+
+8. Feature Test with javascript: load info with AJAX
 
 
 

@@ -52,8 +52,18 @@ class ListOfUsersTest < Capybara::Rails::TestCase
     visit user_path(1)
     click_button('Add Star')
 
-    assert_content page, "John F. Kennedy *" 
-    save_screenshot('tmp/users-index.png', :full => true)
+    assert_content page, "John F. Kennedy * " 
+    save_screenshot('tmp/users_index_screenshot.png', :full => true)
   end
 
+  test "output box for information runs" do
+    Capybara.current_driver = Capybara.javascript_driver
+    visit users_path
+    refute_content page, 'There are'
+    save_screenshot('tmp/output_box_empty_screenshot.png', :full => true)
+    click_button('load info')
+
+    assert_content page, 'There are'
+    save_screenshot('tmp/output_box_filled_screenshot.png', :full => true)
+  end
 end
