@@ -106,9 +106,18 @@ after writing the test:
 > added button to show.html.erb with button_to
   - links to users_path
   - uses method get, because no param is given
-  - used action to update users no_stars
+  - used action to update users no_stars (:action => @user.update(:no_stars => @user.no_stars+1))
 
 8. Feature Test with javascript: load info with AJAX
+check if the outputbox appears when 'load info'-button is clicked
 
+> visit users index
+> to check that output is empty before clicking used 'refute_content page' and saving screenshot
+> then clicking button 'load info'
+> checking content of page with 'asert_content page'
+
+> changed url in app/assets/javascripts/application.js -> test fails -> fixed again
+
+9. TDD: add stars with AJAX
 
 

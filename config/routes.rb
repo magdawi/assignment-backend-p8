@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get 'count'
+      get 'add_star'
     end
   end
 

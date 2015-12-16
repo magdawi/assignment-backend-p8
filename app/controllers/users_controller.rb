@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  # PATCH/PUT /users/add_star
+  def add_star
+    @stars = @user.no_stars+1
+    @user.update_attributes(:no_stars => @stars)
+  end
+
   # GET /users
   # GET /users.json
   def index

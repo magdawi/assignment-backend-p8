@@ -52,7 +52,7 @@ class ListOfUsersTest < Capybara::Rails::TestCase
     visit user_path(1)
     click_button('Add Star')
 
-    assert_content page, "John F. Kennedy * " 
+    assert_content page, "John F. Kennedy *" 
     save_screenshot('tmp/users_index_screenshot.png', :full => true)
   end
 
